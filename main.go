@@ -7,6 +7,8 @@ import (
 	"strconv"
 
 	"github.com/labstack/echo/v4"
+	echoSwagger "github.com/swaggo/echo-swagger"
+	_ "github.com/swaggo/echo-swagger/example/docs"
 )
 
 type Numbers struct {
@@ -24,6 +26,7 @@ func main() {
 	e.POST("/calculator/power", power)
 	e.POST("/calculator/square", square)
 	e.POST("/calculator/squareroot", squareRoot)
+	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.Logger.Fatal(e.Start(":3000"))
 }
 func addition(c echo.Context) error {
