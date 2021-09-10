@@ -233,10 +233,6 @@ var doc = `{
 								required: true,
 								format: json
 							},
-							number2: {
-								type: integer,
-								format: json
-							}
 						}
 					}
 				],
@@ -265,10 +261,6 @@ var doc = `{
 								required: true,
 								format: json
 							},
-							number2: {
-								type: integer,
-								format: json
-							}
 						}
 					}
 				],

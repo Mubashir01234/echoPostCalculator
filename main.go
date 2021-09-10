@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"math"
 	"net/http"
-	"strconv"
 
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"
@@ -14,8 +13,12 @@ import (
 )
 
 type Numbers struct {
-	Number1 int `json:"number1"`
-	Number2 int `json:"number2"`
+	Number1 float64 `json:"number1"`
+	Number2 float64 `json:"number2"`
+}
+
+type Response struct {
+	Result float64 `json:"result"`
 }
 
 func main() {
@@ -38,7 +41,11 @@ func addition(c echo.Context) error {
 	}
 	fmt.Println(n)
 	add := n.Number1 + n.Number2
-	return c.String(http.StatusOK, "Number1 + Number2 = "+strconv.Itoa(add))
+	result:=Response{
+		add,
+	}
+	return c.JSON(http.StatusOK,result)
+	// return c.String(http.StatusOK, "Number1 + Number2 = "+strconv.Itoa(add))
 }
 func subtraction(c echo.Context) error {
 	n := new(Numbers)
@@ -47,7 +54,10 @@ func subtraction(c echo.Context) error {
 	}
 	fmt.Println(n)
 	sub := n.Number1 - n.Number2
-	return c.String(http.StatusOK, "Number1 - Number2 = "+strconv.Itoa(sub))
+	result:=Response{
+		sub,
+	}
+	return c.JSON(http.StatusOK, result)
 }
 func multiplication(c echo.Context) error {
 	n := new(Numbers)
@@ -56,7 +66,10 @@ func multiplication(c echo.Context) error {
 	}
 	fmt.Println(n)
 	mul := n.Number1 * n.Number2
-	return c.String(http.StatusOK, "Number1 * Number2 = "+strconv.Itoa(mul))
+	result:=Response{
+		mul,
+	}
+	return c.JSON(http.StatusOK, result)
 }
 func division(c echo.Context) error {
 	n := new(Numbers)
@@ -64,8 +77,11 @@ func division(c echo.Context) error {
 		return err
 	}
 	fmt.Println(n)
-	div := float64(n.Number1) / float64(n.Number2)
-	return c.String(http.StatusOK, "Number1 / Number2 = "+strconv.FormatFloat(div, 'E', -1, 64))
+	div := n.Number1 / n.Number2
+	result:=Response{
+		div,
+	}
+	return c.JSON(http.StatusOK, result)
 }
 func modules(c echo.Context) error {
 	n := new(Numbers)
@@ -73,8 +89,11 @@ func modules(c echo.Context) error {
 		return err
 	}
 	fmt.Println(n)
-	mod := n.Number1 % n.Number2
-	return c.String(http.StatusOK, "Number1 % Number2 = "+strconv.Itoa(mod))
+	mod := int(n.Number1) % int(n.Number2)
+	result:=Response{
+		float64(mod),
+	}
+	return c.JSON(http.StatusOK, result)
 }
 func power(c echo.Context) error {
 	n := new(Numbers)
@@ -82,9 +101,11 @@ func power(c echo.Context) error {
 		return err
 	}
 	fmt.Println(n)
-	power := math.Pow(float64(n.Number1), float64(n.Number2))
-	pow := int(power)
-	return c.String(http.StatusOK, "Number1 ^ Number2 = "+strconv.Itoa(pow))
+	power := math.Pow(n.Number1,n.Number2)
+	result:=Response{
+		power,
+	}
+	return c.JSON(http.StatusOK, result)
 }
 func square(c echo.Context) error {
 	n := new(Numbers)
@@ -92,9 +113,11 @@ func square(c echo.Context) error {
 		return err
 	}
 	fmt.Println(n)
-	squ1 := n.Number1 * n.Number1
-	squ2 := n.Number2 * n.Number2
-	return c.String(http.StatusOK, "Square of Number1 is: "+strconv.Itoa(squ1)+"\n"+"Square of Number2 is: "+strconv.Itoa(squ2))
+	squ := n.Number1 * n.Number1
+	result:=Response{
+		squ,
+	}
+	return c.JSON(http.StatusOK, result)
 }
 func squareRoot(c echo.Context) error {
 	n := new(Numbers)
@@ -102,8 +125,9 @@ func squareRoot(c echo.Context) error {
 		return err
 	}
 	fmt.Println(n)
-	sqrt1 := math.Sqrt(float64(n.Number1))
-	sqrt2 := math.Sqrt(float64(n.Number2))
-
-	return c.String(http.StatusOK, "Square Root of Number1 = "+strconv.FormatFloat(sqrt1, 'E', -1, 64)+"\nSquare Root of Number2 = "+strconv.FormatFloat(sqrt2, 'E', -1, 64))
+	sqrt := math.Sqrt(n.Number1)
+	result:=Response{
+		sqrt,
+	}
+	return c.JSON(http.StatusOK, result)
 }
