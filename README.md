@@ -1,5 +1,5 @@
 # Echo Post Calculator
-This is a simple echo POST calculator which perform some function like Addition, Subtraction, Multiplication, Division, Modules, Square, Power and Square root.
+This is a simple echo POST calculator which perform some function like Addition, Subtraction, Multiplication, Division, Modulus, Square, Power and Square root.
 
 ### How TO Run
 #### Install This
