@@ -217,8 +217,8 @@ var doc = `{
 		},
 		/calculator/square: {
 			post :{
-				summary: Square of two numbers.,
-				description: They get two number from user and then the square of both number.,
+				summary: Square of a numbers.,
+				description: They get number from user and then take square.,
 				produces: [
 					application/json
 				],
@@ -245,8 +245,8 @@ var doc = `{
 		},
 		/calculator/squareroot: {
 			post :{
-				summary: Square of two numbers.,
-				description: They get two number from user and then square of these numbers.,
+				summary: Square root of a number.,
+				description: They get number from user and then take square root.,
 				produces: [
 					application/json
 				],
