@@ -22,7 +22,265 @@ var doc = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {}
+    "paths": {
+		/calculator/add: {
+			post :{
+				summary: Adding two numbers.,
+				description: They get two number from user and then add each other.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/sub: {
+			post :{
+				summary: Subtracting two numbers.,
+				description: They get two number from user and then subtract.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/mul: {
+			post :{
+				summary: Multipling two numbers.,
+				description: They get two number from user and then multiple.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/div: {
+			post :{
+				summary: Dividing two numbers.,
+				description: They get two number from user and then divide them.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/mod: {
+			post :{
+				summary: Modules of two numbers.,
+				description: They get two number from user and then takr modules.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/power: {
+			post :{
+				summary: Power of numbers.,
+				description: Calculate the value of the number1 raised to the power number2,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/square: {
+			post :{
+				summary: Square of two numbers.,
+				description: They get two number from user and then the square of both number.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
+		/calculator/squareroot: {
+			post :{
+				summary: Square of two numbers.,
+				description: They get two number from user and then square of these numbers.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: body,
+						name: Numbers,
+						description: Give any number,
+						properties: {
+							number1: {
+								type: integer,
+								required: true,
+								format: json
+							},
+							number2: {
+								type: integer,
+								format: json
+							}
+						}
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		}
+	}
+	
 }`
 
 type swaggerInfo struct {
@@ -36,12 +294,12 @@ type swaggerInfo struct {
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = swaggerInfo{
-	Version:     "",
-	Host:        "",
+	Version:     "2.0",
+	Host:        "localhost:3000",
 	BasePath:    "",
 	Schemes:     []string{},
-	Title:       "",
-	Description: "",
+	Title:       "Calculator",
+	Description: "Calculator which perform some action.",
 }
 
 type s struct{}

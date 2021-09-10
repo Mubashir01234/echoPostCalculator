@@ -1,4 +1,4 @@
-module myapp
+module github.com/Mubashir01234/echoPostCalculator
 
 go 1.16
 
