@@ -11,4 +11,4 @@ We have used [swagger](https://swagger.io/solutions/api-documentation/) to check
 ![image](https://user-images.githubusercontent.com/88186645/132848374-5d95ac35-bdc6-45f7-a842-c9ca0743f6e3.png)
 
 ### Output
-![image](https://user-images.githubusercontent.com/88186645/132850815-753b963d-20e8-4e5b-ae72-4b9edcc6e7ed.png)
+![image](https://user-images.githubusercontent.com/88186645/132858803-2e0283b0-b18f-4450-a9fd-18aae8f1a221.png)
