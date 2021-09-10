@@ -6,7 +6,7 @@ This is a simple echo POST calculator which perform some function like Addition,
 - [Visual Code](https://code.visualstudio.com/download)
 
 ## Swagger
-We have used [swagger](http://localhost:3000/swagger/index.html#/) to check ends points.
+We have used [swagger](https://swagger.io/solutions/api-documentation/) to check ends points.
 
 ![image](https://user-images.githubusercontent.com/88186645/132848374-5d95ac35-bdc6-45f7-a842-c9ca0743f6e3.png)
 
