@@ -64,7 +64,7 @@ func Division(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, result)
 }
-func Modules(c echo.Context) error {
+func Modulus(c echo.Context) error {
 	n := new(Numbers)
 	if err := c.Bind(n); err != nil {
 		return err

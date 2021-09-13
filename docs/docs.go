@@ -153,7 +153,7 @@ var doc = `{
 		},
 		/calculator/mod: {
 			post :{
-				summary: Modules of two numbers.,
+				summary: Modulus of two numbers.,
 				description: They get two number from user and then takr modules.,
 				produces: [
 					application/json
