@@ -5,6 +5,7 @@ import (
 	"math"
 	"net/http"
 
+	"github.com/Mubashir01234/echoPostCalculator/database"
 	"github.com/labstack/echo/v4"
 )
 type Numbers struct {
@@ -14,6 +15,20 @@ type Numbers struct {
 
 type Response struct {
 	Result float64 `json:"result"`
+}
+func (number Numbers) Connect(result float64, operation string) {
+    db := database.Conc()
+    defer db.Close()
+    sql := "INSERT INTO calculate(number1, number2, operation, result) VALUES( ?, ?,?, ?)"
+    stmt, err := db.Prepare(sql)
+    if err != nil {
+        fmt.Print(err.Error())
+    }
+    defer stmt.Close()
+    _, err2 := stmt.Exec(number.Number1, number.Number2, operation, result)
+    if err2 != nil {
+        panic(err2)
+    }
 }
 func Addition(c echo.Context) error {
 	n := new(Numbers)
@@ -25,6 +40,8 @@ func Addition(c echo.Context) error {
 	result := Response{
 		add,
 	}
+	n.Connect(add, "+")
+
 	return c.JSON(http.StatusOK, result)
 	// return c.String(http.StatusOK, "Number1 + Number2 = "+strconv.Itoa(add))
 }
@@ -38,6 +55,7 @@ func Subtraction(c echo.Context) error {
 	result := Response{
 		sub,
 	}
+	n.Connect(sub, "-")
 	return c.JSON(http.StatusOK, result)
 }
 func Multiplication(c echo.Context) error {
@@ -50,6 +68,7 @@ func Multiplication(c echo.Context) error {
 	result := Response{
 		mul,
 	}
+	n.Connect(mul, "*")
 	return c.JSON(http.StatusOK, result)
 }
 func Division(c echo.Context) error {
@@ -62,6 +81,7 @@ func Division(c echo.Context) error {
 	result := Response{
 		div,
 	}
+	n.Connect(div, "/")
 	return c.JSON(http.StatusOK, result)
 }
 func Modulus(c echo.Context) error {
@@ -74,6 +94,7 @@ func Modulus(c echo.Context) error {
 	result := Response{
 		float64(mod),
 	}
+	n.Connect(float64(mod), "%")
 	return c.JSON(http.StatusOK, result)
 }
 func Power(c echo.Context) error {
@@ -86,6 +107,7 @@ func Power(c echo.Context) error {
 	result := Response{
 		power,
 	}
+	n.Connect(power, "^")
 	return c.JSON(http.StatusOK, result)
 }
 func Square(c echo.Context) error {
@@ -98,6 +120,7 @@ func Square(c echo.Context) error {
 	result := Response{
 		squ,
 	}
+	n.Connect(squ, "^2")
 	return c.JSON(http.StatusOK, result)
 }
 func SquareRoot(c echo.Context) error {
@@ -110,5 +133,6 @@ func SquareRoot(c echo.Context) error {
 	result := Response{
 		sqrt,
 	}
+	n.Connect(sqrt, "√")
 	return c.JSON(http.StatusOK, result)
 }
