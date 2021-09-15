@@ -13,5 +13,5 @@ We have used [swagger](https://swagger.io/solutions/api-documentation/) to check
 ### Output
 ![image](https://user-images.githubusercontent.com/88186645/132858803-2e0283b0-b18f-4450-a9fd-18aae8f1a221.png)
 
-### Dataabase Output
+### Database Output
 ![image](https://user-images.githubusercontent.com/88186645/133261373-daeffe4d-377b-4abe-b38e-071c99d0d223.png)
