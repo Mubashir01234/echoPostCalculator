@@ -23,7 +23,7 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-		/calculator/add: {
+		"/calculator/add": {
 			post :{
 				summary: Adding two numbers.,
 				description: They get two number from user and then add each other.,
@@ -55,7 +55,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/sub: {
+		"/calculator/sub": {
 			post :{
 				summary: Subtracting two numbers.,
 				description: They get two number from user and then subtract.,
@@ -87,7 +87,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/mul: {
+		"/calculator/mul": {
 			post :{
 				summary: Multipling two numbers.,
 				description: They get two number from user and then multiple.,
@@ -119,7 +119,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/div: {
+		"/calculator/div": {
 			post :{
 				summary: Dividing two numbers.,
 				description: They get two number from user and then divide them.,
@@ -151,7 +151,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/mod: {
+		"/calculator/mod": {
 			post :{
 				summary: Modulus of two numbers.,
 				description: They get two number from user and then takr modules.,
@@ -183,7 +183,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/power: {
+		"/calculator/power": {
 			post :{
 				summary: Power of numbers.,
 				description: Calculate the value of the number1 raised to the power number2,
@@ -215,7 +215,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/square: {
+		"/calculator/square": {
 			post :{
 				summary: Square of a numbers.,
 				description: They get number from user and then take square.,
@@ -243,7 +243,7 @@ var doc = `{
 				}
 			}
 		},
-		/calculator/squareroot: {
+		"/calculator/squareroot": {
 			post :{
 				summary: Square root of a number.,
 				description: They get number from user and then take square root.,
@@ -270,7 +270,31 @@ var doc = `{
 					}
 				}
 			}
-		}
+		},
+		"/calculator/getRecord/{id}": {
+			get :{
+				summary: Get data from id.,
+				description: They get all data of an id that user enter.,
+				produces: [
+					application/json
+				],
+				parameters: [
+					{
+						in: path,
+						name: id,
+						description: Give any id,
+						required: true,
+						type: integer,
+						format: int64
+					}
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
 	}
 	
 }`

@@ -12,9 +12,16 @@ type Numbers struct {
 	Number1 float64 `json:"number1"`
 	Number2 float64 `json:"number2"`
 }
-
 type Response struct {
 	Result float64 `json:"result"`
+}
+type GetResponse struct{
+	Id int `json:"id"`
+	Number1 float64 `json:"number1"`
+	Number2 float64 `json:"number2"`
+	Operation string `json:"operation"`
+	Result float64 `json:"result"`
+	CreatedAt string `json:"createdAt"`
 }
 func (number Numbers) Connect(result float64, operation string) {
     db := database.Conc()
@@ -135,4 +142,27 @@ func SquareRoot(c echo.Context) error {
 	}
 	n.Connect(sqrt, "√")
 	return c.JSON(http.StatusOK, result)
+}
+func GetRecord(c echo.Context) error{
+	db := database.Conc()
+    defer db.Close()
+	requestedId := c.Param("id")
+	fmt.Println(requestedId)
+	var id int
+	var number1, number2, result float64
+	var operation, createdAt string
+	err :=db.QueryRow("select * from calculate where ID = ?", requestedId).Scan(&id, &number1, &number2, &operation, &result, &createdAt)
+	if err!=nil{
+		fmt.Print(err.Error())
+	}
+	res:=GetResponse{
+		Id: id,
+		Number1: number1,
+		Number2: number2,
+		Operation: operation,
+		Result: result,
+		CreatedAt: createdAt,
+		
+	}
+	return c.JSON(http.StatusOK, res)
 }
