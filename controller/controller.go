@@ -24,7 +24,7 @@ type GetResponse struct{
 	CreatedAt string `json:"createdAt"`
 }
 func (number Numbers) Connect(result float64, operation string) {
-    db := database.Conc()
+	db := database.Conc()
     defer db.Close()
     sql := "INSERT INTO calculate(number1, number2, operation, result) VALUES( ?, ?,?, ?)"
     stmt, err := db.Prepare(sql)

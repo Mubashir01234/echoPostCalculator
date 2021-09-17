@@ -1,8 +1,8 @@
 package routes
 
 import (
+	//_ "github.com/Mubashir01234/echoPostCalculator/controller"
 	"github.com/Mubashir01234/echoPostCalculator/controller"
-	_ "github.com/Mubashir01234/echoPostCalculator/controller"
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"
 )

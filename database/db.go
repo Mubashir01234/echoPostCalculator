@@ -13,7 +13,7 @@ func Conc() *sql.DB {
 	} else {
 		fmt.Println("db is connected")
 	}
-
+	
 	// make sure connection is available
 	err = db.Ping()
 	if err != nil {
