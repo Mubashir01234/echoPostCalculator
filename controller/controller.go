@@ -15,13 +15,16 @@ type Numbers struct {
 type Response struct {
 	Result float64 `json:"result"`
 }
-type GetResponse struct{
-	Id int `json:"id"`
-	Number1 float64 `json:"number1"`
-	Number2 float64 `json:"number2"`
-	Operation string `json:"operation"`
-	Result float64 `json:"result"`
-	CreatedAt string `json:"createdAt"`
+type GetRecordResponse struct{
+	Id 			int 	`json:"id"`
+	Number1 	float64 `json:"number1"`
+	Number2 	float64 `json:"number2"`
+	Operation 	string 	`json:"operation"`
+	Result 		float64 `json:"result"`
+	CreatedAt 	string 	`json:"createdAt"`
+}
+type GetAllRecordResponse []struct{
+	getAllrecord []GetRecordResponse `json:"allRecord"`
 }
 func (number Numbers) Connect(result float64, operation string) {
 	db := database.Conc()
@@ -155,7 +158,7 @@ func GetRecord(c echo.Context) error{
 	if err!=nil{
 		fmt.Print(err.Error())
 	}
-	res:=GetResponse{
+	res:=GetRecordResponse{
 		Id: id,
 		Number1: number1,
 		Number2: number2,
@@ -165,4 +168,36 @@ func GetRecord(c echo.Context) error{
 		
 	}
 	return c.JSON(http.StatusOK, res)
+}
+func GetAllRecord(c echo.Context) error{
+	db:= database.Conc()
+	defer db.Close()
+	response:=make([]GetRecordResponse,0)
+	var id int
+	var number1, number2, result float64
+	var operation, createdAt string
+	rows, err :=db.Query("SELECT * FROM calculate")
+	if err!=nil{
+		fmt.Print(err.Error())
+	}
+	defer rows.Close()
+	for rows.Next(){
+		err=rows.Scan(&id, &number1, &number2, &operation, &result, &createdAt)
+		if err!=nil{
+			panic(err)
+		}
+		res:=GetRecordResponse{
+			Id: id,
+			Number1: number1,
+			Number2: number2,
+			Operation: operation,
+			Result: result,
+			CreatedAt: createdAt,
+		}
+		response= append(response,res)
+	}
+	if err := rows.Err(); err != nil {
+		panic(err)
+	}
+	return c.JSON(http.StatusOK, response)
 }

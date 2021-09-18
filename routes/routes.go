@@ -17,5 +17,6 @@ func Routes(e *echo.Echo){
 	e.POST("/calculator/square", controller.Square)
 	e.POST("/calculator/squareroot", controller.SquareRoot)
 	e.GET("/calculator/getRecord/:id", controller.GetRecord)
+	e.GET("/calculator/getAllRecord", controller.GetAllRecord)
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 }

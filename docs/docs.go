@@ -295,6 +295,20 @@ var doc = `{
 				}
 			}
 		},
+		"/calculator/getAllRecord": {
+			get :{
+				summary: Get all the data from database.,
+				description: They get all data that store in database.,
+				produces: [
+					application/json
+				],
+				responses: {
+					200: {
+						description: Status, OK
+					}
+				}
+			}
+		},
 	}
 	
 }`
