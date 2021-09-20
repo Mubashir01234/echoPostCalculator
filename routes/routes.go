@@ -8,18 +8,18 @@ import (
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
-func Routes(e *echo.Echo){
+func Routes(e *echo.Echo) {
 
-	e.Use(middlewares.MubashirMiddleware)
-	e.POST("/calculator/add", controller.Addition)
-	e.POST("/calculator/sub", controller.Subtraction)
-	e.POST("/calculator/mul", controller.Multiplication)
-	e.POST("/calculator/div", controller.Division)
-	e.POST("/calculator/mod", controller.Modulus)
-	e.POST("/calculator/power", controller.Power)
-	e.POST("/calculator/square", controller.Square)
-	e.POST("/calculator/squareroot", controller.SquareRoot)
-	e.GET("/calculator/getRecord/:id", controller.GetRecord)
-	e.GET("/calculator/getAllRecord", controller.GetAllRecord)
+	// e.Use(middlewares.MubashirMiddleware)
+	e.POST("/calculator/add", controller.Addition, middlewares.MubashirMiddleware)
+	e.POST("/calculator/sub", controller.Subtraction, middlewares.MubashirMiddleware)
+	e.POST("/calculator/mul", controller.Multiplication, middlewares.MubashirMiddleware)
+	e.POST("/calculator/div", controller.Division, middlewares.MubashirMiddleware)
+	e.POST("/calculator/mod", controller.Modulus, middlewares.MubashirMiddleware)
+	e.POST("/calculator/power", controller.Power, middlewares.MubashirMiddleware)
+	e.POST("/calculator/square", controller.Square, middlewares.MubashirMiddleware)
+	e.POST("/calculator/squareroot", controller.SquareRoot, middlewares.MubashirMiddleware)
+	e.GET("/calculator/getRecord/:id", controller.GetRecord, middlewares.MubashirMiddleware)
+	e.GET("/calculator/getAllRecord", controller.GetAllRecord, middlewares.MubashirMiddleware)
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 }

@@ -149,6 +149,8 @@ func SquareRoot(c echo.Context) error {
 	return c.JSON(http.StatusOK, result)
 }
 func GetRecord(c echo.Context) error{
+	fmt.Println("HEADER")
+	fmt.Println(c.Request().Header["Authorization"])
 	db := database.Conc()
     defer db.Close()
 	requestedId := c.Param("id")

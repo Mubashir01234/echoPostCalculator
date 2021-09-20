@@ -22,9 +22,19 @@ var doc = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
+	securityDefinitions:{
+		Bearer:{     
+		  type: apiKey,
+		  in: header,
+		  name: Authorization,
+			},
+	},
     "paths": {
 		"/calculator/add": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Adding two numbers.,
 				description: They get two number from user and then add each other.,
 				produces: [
@@ -57,6 +67,9 @@ var doc = `{
 		},
 		"/calculator/sub": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Subtracting two numbers.,
 				description: They get two number from user and then subtract.,
 				produces: [
@@ -89,6 +102,9 @@ var doc = `{
 		},
 		"/calculator/mul": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Multipling two numbers.,
 				description: They get two number from user and then multiple.,
 				produces: [
@@ -121,6 +137,9 @@ var doc = `{
 		},
 		"/calculator/div": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Dividing two numbers.,
 				description: They get two number from user and then divide them.,
 				produces: [
@@ -153,6 +172,9 @@ var doc = `{
 		},
 		"/calculator/mod": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Modulus of two numbers.,
 				description: They get two number from user and then takr modules.,
 				produces: [
@@ -185,6 +207,9 @@ var doc = `{
 		},
 		"/calculator/power": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Power of numbers.,
 				description: Calculate the value of the number1 raised to the power number2,
 				produces: [
@@ -217,6 +242,9 @@ var doc = `{
 		},
 		"/calculator/square": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Square of a numbers.,
 				description: They get number from user and then take square.,
 				produces: [
@@ -245,6 +273,9 @@ var doc = `{
 		},
 		"/calculator/squareroot": {
 			post :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Square root of a number.,
 				description: They get number from user and then take square root.,
 				produces: [
@@ -273,6 +304,9 @@ var doc = `{
 		},
 		"/calculator/getRecord/{id}": {
 			get :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Get data from id.,
 				description: They get all data of an id that user enter.,
 				produces: [
@@ -297,6 +331,9 @@ var doc = `{
 		},
 		"/calculator/getAllRecord": {
 			get :{
+				security: [{
+                    Bearer: []
+                }],
 				summary: Get all the data from database.,
 				description: They get all data that store in database.,
 				produces: [
