@@ -3,11 +3,14 @@ package routes
 import (
 	//_ "github.com/Mubashir01234/echoPostCalculator/controller"
 	"github.com/Mubashir01234/echoPostCalculator/controller"
+	middlewares "github.com/Mubashir01234/echoPostCalculator/middleware"
 	"github.com/labstack/echo/v4"
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 func Routes(e *echo.Echo){
+
+	e.Use(middlewares.MubashirMiddleware)
 	e.POST("/calculator/add", controller.Addition)
 	e.POST("/calculator/sub", controller.Subtraction)
 	e.POST("/calculator/mul", controller.Multiplication)

@@ -8,6 +8,8 @@ import (
 	"github.com/Mubashir01234/echoPostCalculator/database"
 	"github.com/labstack/echo/v4"
 )
+
+// var db *sql.DB
 type Numbers struct {
 	Number1 float64 `json:"number1"`
 	Number2 float64 `json:"number2"`
