@@ -346,6 +346,38 @@ var doc = `{
 				}
 			}
 		},
+		"/calculator/deleteRecord/{id}": {
+			delete :{
+				security: [{
+                    Bearer: []
+                }],
+				summary: Delete data with id.,
+				description: They delete data of an id that user entered.,
+				
+				parameters: [
+					{
+						in: path,
+						name: id,
+						description: Give any id,
+						required: true,
+						type: integer,
+						format: int64
+					}
+				],
+				responses: {
+					204: {
+						description: Deleted
+					},
+					404: {
+						description: id not found
+					},
+					401: {
+						description: Unauthorized
+					}
+				}
+			}
+		},
+		
 	}
 	
 }`

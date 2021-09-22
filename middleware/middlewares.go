@@ -1,7 +1,6 @@
 package middlewares
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -9,7 +8,7 @@ import (
 
 // ServerHeader middleware adds a `Server` header to the response.
 func MubashirMiddleware(next echo.HandlerFunc) echo.HandlerFunc {
-	fmt.Println("MUBASHIRs")
+	// fmt.Println("MUBASHIRs")
 	return func(c echo.Context) error {
 		if (len(c.Request().Header["Authorization"]) > 0) {
 			if (c.Request().Header["Authorization"][0] == "secretkey") {

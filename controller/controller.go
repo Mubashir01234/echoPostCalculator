@@ -17,6 +17,7 @@ type Numbers struct {
 type Response struct {
 	Result float64 `json:"result"`
 }
+
 type GetRecordResponse struct{
 	Id 			int 	`json:"id"`
 	Number1 	float64 `json:"number1"`
@@ -204,4 +205,18 @@ func GetAllRecord(c echo.Context) error{
 		panic(err)
 	}
 	return c.JSON(http.StatusOK, response)
+}
+func DeleteRecord(c echo.Context) error{
+	db:= database.Conc()
+	defer db.Close()
+	requestedId := c.Param("id")
+	fmt.Println(requestedId)
+	_,err :=db.Query("DELETE from calculate where ID = ?", requestedId)
+	if err!=nil{
+		fmt.Print(err.Error())
+	}
+	// res:=ResDel{
+	// 	Message: "ID information is deleted",	
+	// }
+	return c.JSON(http.StatusOK, "Success")
 }

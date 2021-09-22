@@ -21,5 +21,6 @@ func Routes(e *echo.Echo) {
 	e.POST("/calculator/squareroot", controller.SquareRoot, middlewares.MubashirMiddleware)
 	e.GET("/calculator/getRecord/:id", controller.GetRecord, middlewares.MubashirMiddleware)
 	e.GET("/calculator/getAllRecord", controller.GetAllRecord, middlewares.MubashirMiddleware)
+	e.DELETE("/calculator/deleteRecord/:id", controller.DeleteRecord, middlewares.MubashirMiddleware)
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 }
